@@ -1,6 +1,7 @@
 <script setup>
   import { ref, computed, reactive } from 'vue'
-
+  import  { vueEmbedComponent } from '@knowlearning/agents/vue.js'
+  import { validate as isUUID } from 'uuid'
   const numRows = ref(6)
   const numColumns = ref(6)
   const rowGap = ref(8)
@@ -105,7 +106,7 @@
         >
           x
         </button>
-        {{ area.content }}
+        <vueEmbedComponent v-if="isUUID(area.content)" :id="area.content" />
       </div>
       <div
         v-if="activeArea"
